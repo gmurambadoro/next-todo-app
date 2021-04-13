@@ -1,14 +1,11 @@
 const {Task} = require('../../../models');
 
 export default async (req, res) => {
-    const { method } = req;
+    const { method, body } = req;
 
     if (method === 'POST') {
         // let's create a todo
-        const task = new Task({
-            name: 'Task #1 ' + (new Date()).toISOString(),
-            isDone: false,
-        });
+        const task = new Task(body);
 
         await task.save();
 
