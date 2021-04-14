@@ -6,6 +6,10 @@ const NewTaskForm = ({ handleTaskAdd }) => {
     const handleSubmit = (event) => {
         event.preventDefault();
 
+        if (!name) {
+            return;
+        }
+
         handleTaskAdd({name, isDone: false});
 
         setName('');

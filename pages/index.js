@@ -28,23 +28,21 @@ export default function Home() {
         await fetchTasks();
     };
 
-    if (isLoading) {
-        return (
-            <Loader
-                type="Puff"
-                color="#00BFFF"
-                height={100}
-                width={100}
-                timeout={3000} //3 secs
-            />
-        );
-    }
+    const loader = (
+        <Loader
+            type="ThreeDots"
+            color="#00BFFF"
+            height={100}
+            width={100}
+            timeout={3000} //3 secs
+        />
+    );
 
     return (
         <div className={styles.container}>
             <NewTaskForm handleTaskAdd={handleTaskAdd} />
 
-            <Tasks tasks={tasks} />
+            {isLoading ? loader : <Tasks tasks={tasks} />}
         </div>
     );
 }

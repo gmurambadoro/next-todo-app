@@ -2,6 +2,8 @@ import {MONGO_URL} from "../config";
 
 const mongoose = require('mongoose');
 
+mongoose.Promise = global.Promise;
+
 // connect to the database
 mongoose.connect(MONGO_URL, {useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => console.log('Connected to MongoDB'))
@@ -20,4 +22,4 @@ const taskSchema = new mongoose.Schema({
 const User = mongoose.model('User', userSchema);
 const Task = mongoose.model('Task', taskSchema);
 
-export { User, Task };
+module.exports = { User, Task };
